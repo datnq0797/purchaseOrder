@@ -15,7 +15,7 @@ interface SidebarProps {
 export function Sidebar({ open, onNavigate }: SidebarProps) {
   return (
     <aside
-      className={`fixed inset-y-0 left-0 z-40 w-64 transform border-r border-slate-200 bg-white transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 ${
+      className={`fixed inset-y-0 left-0 z-40 w-64 transform border-r border-slate-200 bg-white transition-transform duration-200 ease-in-out lg:static lg:translate-x-0 lg:flex-shrink-0 ${
         open ? 'translate-x-0' : '-translate-x-full'
       }`}
     >

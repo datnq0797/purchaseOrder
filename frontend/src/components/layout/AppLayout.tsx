@@ -7,7 +7,7 @@ export function AppLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-slate-50 lg:flex">
       <Sidebar open={sidebarOpen} onNavigate={() => setSidebarOpen(false)} />
 
       {sidebarOpen && (
@@ -18,7 +18,7 @@ export function AppLayout() {
         />
       )}
 
-      <div className="lg:pl-64">
+      <div className="min-w-0 flex-1">
         <Topbar onMenuClick={() => setSidebarOpen(true)} />
         <main className="p-4 lg:p-6">
           <Outlet />
