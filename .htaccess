@@ -1,0 +1,21 @@
+# Hostinger serves this repo from public_html/. The deployable app lives in
+# backend/public/, so rewrite every request into that folder. backend/public/
+# has its own .htaccess that hands off to Laravel's front controller.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Already inside backend/public — let it through.
+    RewriteCond %{REQUEST_URI} ^/backend/public/
+    RewriteRule ^ - [L]
+
+    # Block direct access to source folders.
+    RewriteCond %{REQUEST_URI} ^/(backend|frontend)/
+    RewriteRule ^ - [F]
+
+    RewriteRule ^(.*)$ backend/public/$1 [L]
+</IfModule>
+
+# Fallback for servers without mod_rewrite.
+<IfModule !mod_rewrite.c>
+    DirectoryIndex backend/public/index.php
+</IfModule>
